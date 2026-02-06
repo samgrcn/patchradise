@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethics & Sustainability — Patchradise</title>
+  <meta name="description" content="Patchradise is committed to protecting the ocean. Biodegradable patches, plastic-free packaging, and 1% of every sale to ocean conservation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: #1a1a2e;
+      background: #fffbf5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --coral: #FF6B6B;
+      --coral-dark: #e85555;
+      --ocean: #0891B2;
+      --ocean-dark: #0E7490;
+      --ocean-light: #67E8F9;
+      --sunset: #F97316;
+      --sunset-light: #FDBA74;
+      --sand: #FEF3C7;
+      --deep: #1a1a2e;
+      --lavender: #A78BFA;
+      --mint: #34D399;
+      --pink: #F472B6;
+      --sky: #38BDF8;
+      --cream: #fffbf5;
+    }
+
+    /* ========== ANIMATED BACKGROUND ========== */
+    .bg-blobs {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-blobs .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: blobFloat 20s ease-in-out infinite;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--mint); top: -10%; left: -5%; animation-delay: 0s; }
+    .blob-2 { width: 500px; height: 500px; background: var(--ocean-light); top: 30%; right: -10%; animation-delay: -5s; }
+    .blob-3 { width: 400px; height: 400px; background: var(--mint); bottom: 10%; left: 20%; animation-delay: -10s; }
+    .blob-4 { width: 350px; height: 350px; background: var(--ocean); top: 60%; left: -5%; animation-delay: -15s; }
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(40px, 30px) scale(1.03); }
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(255, 251, 245, 0.9);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--ocean); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a.active { opacity: 1; }
+    .nav-cta {
+      background: var(--coral);
+      color: #fff !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      opacity: 1 !important;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: var(--coral-dark);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35);
+    }
+    .mobile-toggle { display: none; background: none; font-size: 1.5rem; }
+
+    /* ========== SECTION STYLES ========== */
+    section { padding: 6rem 2rem; }
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 4rem;
+    }
+    .section-tag {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-header p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ========== BUTTONS ========== */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--coral), var(--sunset));
+      color: #fff;
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 107, 107, 0.45);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: 2px solid var(--ocean);
+      color: var(--ocean);
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover {
+      background: var(--ocean);
+      color: #fff;
+    }
+
+    /* ========== PAGE HERO ========== */
+    .page-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+    }
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+    .page-hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero-text h1 .highlight {
+      background: linear-gradient(135deg, var(--mint), var(--ocean));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-hero-text p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #555;
+      max-width: 500px;
+    }
+    .hero-visual-card {
+      width: 420px;
+      height: 480px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #059669, var(--mint), var(--ocean-light));
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(5, 150, 105, 0.25);
+      animation: heroFloat 6s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-visual-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+    .hero-visual-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: #fff;
+      padding: 2.5rem;
+    }
+    .hero-visual-content .eco-icon {
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin: 0 auto 1.5rem;
+    }
+    .hero-visual-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero-visual-content p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+    .hero-visual-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .float-badge {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      animation: badgeFloat 5s ease-in-out infinite;
+      z-index: 2;
+    }
+    .float-badge .badge-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .badge-1 { top: 10%; right: -10px; animation-delay: -1s; }
+    .badge-1 .badge-icon { background: #D1FAE5; }
+    .badge-2 { bottom: 18%; left: -30px; animation-delay: -3s; }
+    .badge-2 .badge-icon { background: #DBEAFE; }
+    .badge-3 { top: 45%; left: -40px; animation-delay: -2s; }
+    .badge-3 .badge-icon { background: #FEF3C7; }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-15px) rotate(-1deg); }
+    }
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ========== OCEAN COMMITMENT ========== */
+    .commitment-section {
+      background: #fff;
+    }
+    .commitment-section .section-tag {
+      background: #D1FAE5;
+      color: #059669;
+    }
+    .commitment-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .commitment-visual {
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--mint), #6EE7B7, var(--ocean-light));
+      padding: 3rem;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .commitment-visual::before {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      top: 10%; right: 10%;
+    }
+    .commitment-visual::after {
+      content: '';
+      position: absolute;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      bottom: 15%; left: 8%;
+    }
+    .commitment-visual-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: #fff;
+    }
+    .commitment-visual-inner .icon-wrap {
+      width: 120px; height: 120px;
+      margin: 0 auto 1.5rem;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .commitment-visual-inner p {
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    .commitment-content blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--deep);
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+      border-left: 4px solid var(--mint);
+    }
+    .commitment-list {
+      list-style: none;
+    }
+    .commitment-list li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+    .commitment-list .check-icon {
+      width: 36px; height: 36px;
+      min-width: 36px;
+      border-radius: 10px;
+      background: #D1FAE5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #059669;
+      font-weight: 700;
+    }
+    .commitment-list .check-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .commitment-list .check-text p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ========== BIODEGRADABLE SECTION ========== */
+    .biodegradable-section {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+    }
+    .biodegradable-section .section-tag {
+      background: #D1FAE5;
+      color: #059669;
+    }
+    .bio-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .bio-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid #f0ebe3;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .bio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .bio-icon {
+      width: 56px; height: 56px;
+      min-width: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .bio-card:nth-child(1) .bio-icon { background: #D1FAE5; }
+    .bio-card:nth-child(2) .bio-icon { background: #DBEAFE; }
+    .bio-card:nth-child(3) .bio-icon { background: #FEF3C7; }
+    .bio-card:nth-child(4) .bio-icon { background: #EDE9FE; }
+    .bio-text h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .bio-text p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ========== PACKAGING SECTION ========== */
+    .packaging-section {
+      background: #fff;
+    }
+    .packaging-section .section-tag {
+      background: #FEF3C7;
+      color: var(--sunset);
+    }
+    .packaging-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .packaging-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .packaging-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    .packaging-list li {
+      display: flex;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      font-size: 1rem;
+      color: #555;
+      align-items: center;
+    }
+    .packaging-list li .li-icon {
+      width: 32px; height: 32px;
+      min-width: 32px;
+      border-radius: 8px;
+      background: #FEF3C7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
+    .packaging-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--sunset);
+      padding-left: 1.5rem;
+      border-left: 4px solid var(--sunset-light);
+    }
+    .packaging-visual {
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--sand), var(--sunset-light), #FBBF24);
+      padding: 3rem;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .packaging-visual::before {
+      content: '';
+      position: absolute;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      top: -30px; right: -30px;
+    }
+    .packaging-visual-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .packaging-visual-inner .pkg-icon {
+      width: 120px; height: 120px;
+      margin: 0 auto 1rem;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .packaging-visual-inner p {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #92400E;
+    }
+
+    /* ========== 1% FOR THE OCEAN ========== */
+    .ocean-section {
+      padding: 6rem 2rem;
+    }
+    .ocean-section .section-tag {
+      background: rgba(103, 232, 249, 0.2);
+      color: var(--ocean-dark);
+    }
+    .ocean-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--ocean-dark), var(--ocean), var(--sky));
+      padding: 4rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .ocean-card::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      top: -100px; right: -100px;
+    }
+    .ocean-card::after {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      bottom: -80px; left: -80px;
+    }
+    .ocean-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .ocean-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .ocean-card-header .big-num {
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .ocean-card-header .big-num sup {
+      font-size: 2.5rem;
+      vertical-align: super;
+    }
+    .ocean-card-header .header-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+    .ocean-card-header .header-text p {
+      font-size: 1.05rem;
+      opacity: 0.8;
+    }
+    .ocean-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .ocean-stat {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .ocean-stat .stat-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .ocean-stat .stat-label {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+    .ocean-stat .stat-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ========== CARBON FOOTPRINT ========== */
+    .carbon-section {
+      background: linear-gradient(180deg, #fff 0%, var(--cream) 100%);
+    }
+    .carbon-section .section-tag {
+      background: #D1FAE5;
+      color: #059669;
+    }
+    .carbon-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .carbon-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid #f0ebe3;
+      transition: transform 0.3s;
+    }
+    .carbon-card:hover { transform: translateY(-4px); }
+    .carbon-card:nth-child(5) {
+      grid-column: 1 / -1;
+      max-width: 520px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .carbon-num {
+      width: 44px; height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--mint), #6EE7B7);
+      color: var(--deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .carbon-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .carbon-text p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ========== QUESTIONS SECTION ========== */
+    .questions-section {
+      background: #fff;
+    }
+    .questions-section .section-tag {
+      background: #DBEAFE;
+      color: #3B82F6;
+    }
+    .questions-list {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .question-item {
+      margin-bottom: 2.5rem;
+    }
+    .question-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      color: var(--deep);
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+    .question-item h3 .q-icon {
+      width: 36px; height: 36px;
+      min-width: 36px;
+      border-radius: 10px;
+      background: #DBEAFE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #3B82F6;
+    }
+    .question-item p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.8;
+      padding-left: 3.3rem;
+    }
+    .question-divider {
+      width: 60px;
+      height: 3px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--ocean-light), var(--mint));
+      margin: 0 0 2.5rem 3.3rem;
+    }
+
+    /* ========== FINAL CTA ========== */
+    .final-cta-section {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--deep) 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(52, 211, 153, 0.12);
+      filter: blur(80px);
+      top: -100px; right: -100px;
+    }
+    .final-cta-section::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(8, 145, 178, 0.1);
+      filter: blur(80px);
+      bottom: -100px; left: -100px;
+    }
+    .final-cta-inner {
+      max-width: 650px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .final-cta-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .final-cta-inner p {
+      font-size: 1.1rem;
+      opacity: 0.65;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .final-cta-inner .btn-primary {
+      font-size: 1.1rem;
+      padding: 1.1rem 2.5rem;
+    }
+    .urgency-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.6);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--ocean-light); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .footer-socials { display: flex; gap: 1rem; }
+    .footer-socials a {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .footer-socials a:hover { background: var(--ocean); }
+
+    /* ========== ANIMATIONS ON SCROLL ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .page-hero-text p { margin: 0 auto; }
+      .hero-visual-wrap { order: -1; }
+      .hero-visual-card { width: 300px; height: 380px; }
+      .commitment-layout { grid-template-columns: 1fr; }
+      .commitment-visual { min-height: 300px; }
+      .bio-grid { grid-template-columns: 1fr; }
+      .packaging-layout { grid-template-columns: 1fr; }
+      .packaging-visual { min-height: 300px; }
+      .ocean-stats { grid-template-columns: repeat(2, 1fr); }
+      .ocean-card { padding: 2.5rem; }
+      .ocean-card-header .big-num { font-size: 3.5rem; }
+      .ocean-card-header .header-text h3 { font-size: 1.5rem; }
+      .carbon-grid { grid-template-columns: 1fr; }
+      .carbon-card:nth-child(5) { max-width: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .float-badge { display: none; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(255,251,245,0.98);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+      .mobile-toggle { display: block; }
+    }
+    @media (max-width: 600px) {
+      .ocean-stats { grid-template-columns: 1fr; }
+      .ocean-card-header { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 500px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html"><div class="nav-logo">patch<span>radise</span></div></a>
+      <div class="nav-links" id="navLinks">
+        <a href="product.html">Product</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="crafted.html">How It's Made</a>
+        <a href="sustainability.html" class="active">Ethics</a>
+        <a href="index.html#pricing" class="nav-cta">Shop Now</a>
+      </div>
+      <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+        &#9776;
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-text reveal">
+        <h1>We Protect the Ocean That <span class="highlight">Gives Us Everything</span></h1>
+        <p>Sustainability is not a marketing buzzword at Patchradise. It is the foundation of every decision we make, from the materials we source to the way we ship your order. If it is not good for the ocean, it does not leave our facility.</p>
+      </div>
+      <div class="hero-visual-wrap">
+        <div class="hero-visual-card reveal">
+          <div class="hero-visual-content">
+            <div class="eco-icon">&#127793;</div>
+            <h3>Ocean-First Design</h3>
+            <p>Every material, every process, every choice made with the sea in mind</p>
+          </div>
+        </div>
+        <div class="float-badge badge-1">
+          <div class="badge-icon">&#9851;&#65039;</div>
+          <span>100% Biodegradable</span>
+        </div>
+        <div class="float-badge badge-2">
+          <div class="badge-icon">&#127754;</div>
+          <span>Marine Safe</span>
+        </div>
+        <div class="float-badge badge-3">
+          <div class="badge-icon">&#128062;</div>
+          <span>Cruelty-Free</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Ocean Commitment -->
+  <section class="commitment-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Our Commitment</div>
+      <h2>The Ocean Comes First. Always.</h2>
+      <p>We built Patchradise for people who live in the water. Protecting that water is non-negotiable.</p>
+    </div>
+    <div class="commitment-layout">
+      <div class="commitment-visual reveal">
+        <div class="commitment-visual-inner">
+          <div class="icon-wrap">&#127754;</div>
+          <p>Tested safe for marine ecosystems</p>
+        </div>
+      </div>
+      <div class="commitment-content reveal">
+        <blockquote>"The ocean is where we work, play, and find peace. Putting anything harmful back into it is not an option."</blockquote>
+        <ul class="commitment-list">
+          <li>
+            <div class="check-icon">&#10003;</div>
+            <div class="check-text">
+              <h4>Marine Safety Tested</h4>
+              <p>Every material in our patches is independently tested for marine safety before it earns a place in our product.</p>
+            </div>
+          </li>
+          <li>
+            <div class="check-icon">&#10003;</div>
+            <div class="check-text">
+              <h4>Zero Microplastics</h4>
+              <p>Our patches break down entirely into natural compounds. No microplastics, no synthetic fragments, no hidden pollutants.</p>
+            </div>
+          </li>
+          <li>
+            <div class="check-icon">&#10003;</div>
+            <div class="check-text">
+              <h4>Conservation Partnerships</h4>
+              <p>We work directly with ocean conservation organizations on coral restoration, reef monitoring, and marine habitat protection.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Biodegradable By Design -->
+  <section class="biodegradable-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Materials</div>
+      <h2>Biodegradable by Design</h2>
+      <p>Every single component of our patches is engineered to return safely to the earth and sea.</p>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-card reveal">
+        <div class="bio-icon">&#129518;</div>
+        <div class="bio-text">
+          <h3>Patch Material</h3>
+          <p>Made from plant-derived hydrocolloid that fully biodegrades within 180 days in marine environments. No synthetic polymers, no microplastics left behind.</p>
+        </div>
+      </div>
+      <div class="bio-card reveal">
+        <div class="bio-icon">&#128167;</div>
+        <div class="bio-text">
+          <h3>Adhesive Layer</h3>
+          <p>Water-soluble adhesive that dissolves harmlessly in the ocean, leaving zero trace. Derived from natural plant-based compounds.</p>
+        </div>
+      </div>
+      <div class="bio-card reveal">
+        <div class="bio-icon">&#127795;</div>
+        <div class="bio-text">
+          <h3>Backing Paper</h3>
+          <p>Compostable release liner made from sustainably harvested wood pulp. Breaks down fully in home compost or commercial facilities.</p>
+        </div>
+      </div>
+      <div class="bio-card reveal">
+        <div class="bio-icon">&#127912;</div>
+        <div class="bio-text">
+          <h3>Ink &amp; Print</h3>
+          <p>Soy-based inks on all packaging and patch markings. Non-toxic, biodegradable, and free from petroleum-derived chemicals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packaging -->
+  <section class="packaging-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Packaging</div>
+      <h2>Less Packaging. Zero Plastic.</h2>
+      <p>We believe the unboxing experience should not cost the earth anything.</p>
+    </div>
+    <div class="packaging-layout">
+      <div class="packaging-content reveal">
+        <h3>Every Layer Counts</h3>
+        <ul class="packaging-list">
+          <li>
+            <div class="li-icon">&#10003;</div>
+            100% plastic-free packaging from outer box to inner pouch
+          </li>
+          <li>
+            <div class="li-icon">&#10003;</div>
+            Boxes made from post-consumer recycled cardboard
+          </li>
+          <li>
+            <div class="li-icon">&#10003;</div>
+            Soy-based inks for all printing and branding
+          </li>
+          <li>
+            <div class="li-icon">&#10003;</div>
+            Resealable pouches made from compostable plant-based film
+          </li>
+          <li>
+            <div class="li-icon">&#10003;</div>
+            No shrink wrap, no blister packs, no unnecessary layers
+          </li>
+        </ul>
+        <p class="packaging-quote">"We believe the best packaging is the least packaging."</p>
+      </div>
+      <div class="packaging-visual reveal">
+        <div class="packaging-visual-inner">
+          <div class="pkg-icon">&#128230;</div>
+          <p>100% Plastic-Free</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1% For The Ocean -->
+  <section class="ocean-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Giving Back</div>
+      <h2>1% for the Ocean</h2>
+      <p>Every purchase directly funds the health of our coastlines and reefs.</p>
+    </div>
+    <div class="ocean-card reveal">
+      <div class="ocean-card-inner">
+        <div class="ocean-card-header">
+          <div class="big-num">1<sup>%</sup></div>
+          <div class="header-text">
+            <h3>Of Every Sale. No Exceptions.</h3>
+            <p>1% of every sale goes directly to ocean cleanup and coral restoration initiatives worldwide.</p>
+          </div>
+        </div>
+        <div class="ocean-stats">
+          <div class="ocean-stat">
+            <div class="stat-icon">&#127754;</div>
+            <div class="stat-value">Ocean Cleanup</div>
+            <div class="stat-label">Active partnership with coastal cleanup programs</div>
+          </div>
+          <div class="ocean-stat">
+            <div class="stat-icon">&#129704;</div>
+            <div class="stat-value">Coral Restoration</div>
+            <div class="stat-label">Funding reef rebuilding and monitoring efforts</div>
+          </div>
+          <div class="ocean-stat">
+            <div class="stat-icon">&#127958;</div>
+            <div class="stat-value">Beach Cleanups</div>
+            <div class="stat-label">Regular events organized by the Patchradise team</div>
+          </div>
+          <div class="ocean-stat">
+            <div class="stat-icon">&#127919;</div>
+            <div class="stat-value">10 Tons by 2027</div>
+            <div class="stat-label">Our goal: remove 10 tons of ocean waste</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carbon Footprint -->
+  <section class="carbon-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Carbon Footprint</div>
+      <h2>Lighter on the Planet</h2>
+      <p>We measure, reduce, and offset our environmental impact at every stage of the supply chain.</p>
+    </div>
+    <div class="carbon-grid">
+      <div class="carbon-card reveal">
+        <div class="carbon-num">1</div>
+        <div class="carbon-text">
+          <h4>Local Manufacturing</h4>
+          <p>Made in California to reduce shipping distance and support local communities. Shorter supply chain, smaller footprint.</p>
+        </div>
+      </div>
+      <div class="carbon-card reveal">
+        <div class="carbon-num">2</div>
+        <div class="carbon-text">
+          <h4>Lightweight Product</h4>
+          <p>Each patch weighs under 5 grams, meaning minimal shipping emissions per unit compared to traditional surf accessories.</p>
+        </div>
+      </div>
+      <div class="carbon-card reveal">
+        <div class="carbon-num">3</div>
+        <div class="carbon-text">
+          <h4>Carbon Offset Program</h4>
+          <p>Every shipment is carbon-offset through verified reforestation and renewable energy programs.</p>
+        </div>
+      </div>
+      <div class="carbon-card reveal">
+        <div class="carbon-num">4</div>
+        <div class="carbon-text">
+          <h4>Renewable Energy</h4>
+          <p>Our warehouse and fulfillment center are powered by 100% renewable energy sources.</p>
+        </div>
+      </div>
+      <div class="carbon-card reveal">
+        <div class="carbon-num">5</div>
+        <div class="carbon-text">
+          <h4>Annual Transparency Report</h4>
+          <p>Ongoing audit of supply chain emissions with a publicly available annual transparency report. Full accountability, no greenwashing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Questions Answered -->
+  <section class="questions-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Your Questions</div>
+      <h2>Common Questions Answered</h2>
+      <p>Transparency matters. Here are honest answers to the things people ask us most.</p>
+    </div>
+    <div class="questions-list">
+      <div class="question-item reveal">
+        <h3><span class="q-icon">Q</span> What happens if a patch falls off in the ocean?</h3>
+        <p>It biodegrades completely within 180 days. No microplastics, no harmful residues. The materials break down into compounds naturally found in seawater. Your lost patch will not become pollution.</p>
+      </div>
+      <div class="question-divider"></div>
+
+      <div class="question-item reveal">
+        <h3><span class="q-icon">Q</span> Is the packaging really plastic-free?</h3>
+        <p>Yes, 100%. From the outer box to the inner pouch, every single component is either recycled, recyclable, or compostable. We audit every supplier to verify this claim, and we publish the results.</p>
+      </div>
+      <div class="question-divider"></div>
+
+      <div class="question-item reveal">
+        <h3><span class="q-icon">Q</span> Do you offset your carbon emissions?</h3>
+        <p>Yes. We partner with verified carbon offset programs and are actively working toward fully carbon-neutral operations by 2027. Every shipment is offset, and we publish an annual emissions report.</p>
+      </div>
+      <div class="question-divider"></div>
+
+      <div class="question-item reveal">
+        <h3><span class="q-icon">Q</span> How do I dispose of used patches?</h3>
+        <p>Used patches can go in your regular trash. They will biodegrade in standard landfill conditions. The backing paper is home-compostable, so if you have a compost bin, even better.</p>
+      </div>
+      <div class="question-divider"></div>
+
+      <div class="question-item reveal">
+        <h3><span class="q-icon">Q</span> Do you test on animals?</h3>
+        <p>Never. Patchradise is proudly cruelty-free and always will be. We use only synthetic and plant-based testing methods. No animal was harmed to make your surf session better.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta-section">
+    <div class="final-cta-inner reveal">
+      <h2>Surf Better. Tread Lighter.</h2>
+      <p>Every Patchradise purchase supports ocean conservation. Ride with a clear conscience and skin that feels even better.</p>
+      <a href="index.html#pricing" class="btn-primary">Shop Patchradise &rarr;</a>
+      <div class="urgency-note">Every purchase supports ocean conservation</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">patch<span>radise</span></div>
+        <p>Making wetsuit itch a thing of the past. Designed in California, loved worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="product.html">Product</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#reviews">Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="our-story.html">Our Story</a>
+        <a href="crafted.html">How It's Made</a>
+        <a href="sustainability.html">Ethics</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Help Center</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Patchradise. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram">&#128247;</a>
+        <a href="#" aria-label="TikTok">&#127916;</a>
+        <a href="#" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>

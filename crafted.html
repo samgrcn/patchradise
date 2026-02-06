@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How & Where It's Made — Patchradise</title>
+  <meta name="description" content="Discover how Patchradise anti-itch surf patches are designed, manufactured, and quality-tested in our California medical-grade facility.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: #1a1a2e;
+      background: #fffbf5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --coral: #FF6B6B;
+      --coral-dark: #e85555;
+      --ocean: #0891B2;
+      --ocean-dark: #0E7490;
+      --ocean-light: #67E8F9;
+      --sunset: #F97316;
+      --sunset-light: #FDBA74;
+      --sand: #FEF3C7;
+      --deep: #1a1a2e;
+      --lavender: #A78BFA;
+      --mint: #34D399;
+      --pink: #F472B6;
+      --sky: #38BDF8;
+      --cream: #fffbf5;
+    }
+
+    /* ========== ANIMATED BACKGROUND ========== */
+    .bg-blobs {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-blobs .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: blobFloat 20s ease-in-out infinite;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--ocean-light); top: -10%; left: -5%; animation-delay: 0s; }
+    .blob-2 { width: 500px; height: 500px; background: var(--coral); top: 30%; right: -10%; animation-delay: -5s; }
+    .blob-3 { width: 400px; height: 400px; background: var(--sunset-light); bottom: 10%; left: 20%; animation-delay: -10s; }
+    .blob-4 { width: 350px; height: 350px; background: var(--lavender); top: 60%; left: -5%; animation-delay: -15s; }
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(40px, 30px) scale(1.03); }
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(255, 251, 245, 0.9);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--ocean); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a.active { opacity: 1; }
+    .nav-cta {
+      background: var(--coral);
+      color: #fff !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      opacity: 1 !important;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: var(--coral-dark);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35);
+    }
+    .mobile-toggle { display: none; background: none; font-size: 1.5rem; }
+
+    /* ========== SECTION STYLES ========== */
+    section { padding: 6rem 2rem; }
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 4rem;
+    }
+    .section-tag {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-header p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ========== BUTTONS ========== */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--coral), var(--sunset));
+      color: #fff;
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 107, 107, 0.45);
+    }
+
+    /* ========== PAGE HERO ========== */
+    .page-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+    }
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+    .page-hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero-text h1 .highlight {
+      background: linear-gradient(135deg, var(--sunset), var(--coral));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-hero-text .section-tag {
+      background: #FEE2E2;
+      color: var(--coral);
+    }
+    .page-hero-text p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #555;
+      max-width: 500px;
+    }
+    .page-hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-gradient-card {
+      width: 420px;
+      height: 480px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--sunset), var(--coral), var(--sunset-light));
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(249, 115, 22, 0.25);
+      animation: heroFloat 6s ease-in-out infinite;
+    }
+    .hero-gradient-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+    .hero-gradient-card-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2.5rem;
+      color: #fff;
+    }
+    .hero-gradient-card-content .card-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-gradient-card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .hero-gradient-card-content p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    .float-badge {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      animation: badgeFloat 5s ease-in-out infinite;
+      z-index: 2;
+    }
+    .float-badge .badge-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .badge-1 { top: 15%; right: -10px; animation-delay: -1s; }
+    .badge-1 .badge-icon { background: #DBEAFE; }
+    .badge-2 { bottom: 20%; left: -30px; animation-delay: -3s; }
+    .badge-2 .badge-icon { background: #D1FAE5; }
+    .badge-3 { top: 40%; left: -40px; animation-delay: -2s; }
+    .badge-3 .badge-icon { background: #EDE9FE; }
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-15px) rotate(-1deg); }
+    }
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ========== DESIGN PROCESS SECTION ========== */
+    .design-section {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+    }
+    .design-section .section-tag {
+      background: #EDE9FE;
+      color: var(--lavender);
+    }
+    .design-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .design-visual {
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--lavender), var(--pink), var(--sky));
+      padding: 3rem;
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .design-visual-inner {
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      position: relative;
+    }
+    .design-visual-inner::after {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      border-radius: 50%;
+      border: 3px dashed rgba(255,255,255,0.4);
+      animation: spin 15s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .design-visual-center {
+      text-align: center;
+    }
+    .design-visual-center .icon { font-size: 3rem; margin-bottom: 0.5rem; }
+    .design-visual-center p { font-weight: 700; color: var(--lavender); font-size: 0.9rem; }
+    .design-points { list-style: none; }
+    .design-points li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      align-items: flex-start;
+    }
+    .design-num {
+      width: 40px; height: 40px;
+      min-width: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--lavender), var(--pink));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+    .design-text h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .design-text p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ========== WHERE ITS MADE SECTION ========== */
+    .where-section { background: #fff; }
+    .where-section .section-tag {
+      background: #D1FAE5;
+      color: #059669;
+    }
+    .where-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .where-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      border: 1px solid #f0ebe3;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .where-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .where-card.wide {
+      grid-column: span 1;
+    }
+    .where-icon {
+      width: 70px; height: 70px;
+      margin: 0 auto 1.2rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    .where-card:nth-child(1) .where-icon { background: #DBEAFE; }
+    .where-card:nth-child(2) .where-icon { background: #D1FAE5; }
+    .where-card:nth-child(3) .where-icon { background: #EDE9FE; }
+    .where-card:nth-child(4) .where-icon { background: #FEF3C7; }
+    .where-card:nth-child(5) .where-icon { background: #FCE7F3; }
+    .where-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .where-card p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+    }
+    .where-bottom-row {
+      max-width: 1000px;
+      margin: 1.5rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* ========== QUALITY CONTROL SECTION ========== */
+    .qc-section {
+      background: linear-gradient(135deg, var(--deep) 0%, #16213e 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .qc-section::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(8, 145, 178, 0.1);
+      filter: blur(60px);
+    }
+    .qc-section .section-tag {
+      background: rgba(103, 232, 249, 0.15);
+      color: var(--ocean-light);
+    }
+    .qc-section .section-header p { color: rgba(255,255,255,0.6); }
+    .qc-steps {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    .qc-steps::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--coral), var(--sunset), var(--ocean), var(--mint), var(--lavender));
+      opacity: 0.3;
+    }
+    .qc-card {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .qc-num {
+      width: 80px; height: 80px;
+      margin: 0 auto 1.5rem;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .qc-card:nth-child(1) .qc-num { background: linear-gradient(135deg, var(--coral), var(--sunset)); }
+    .qc-card:nth-child(2) .qc-num { background: linear-gradient(135deg, var(--ocean), var(--sky)); }
+    .qc-card:nth-child(3) .qc-num { background: linear-gradient(135deg, var(--mint), #6EE7B7); color: var(--deep); }
+    .qc-card:nth-child(4) .qc-num { background: linear-gradient(135deg, var(--lavender), var(--pink)); }
+    .qc-card:nth-child(5) .qc-num { background: linear-gradient(135deg, var(--sunset-light), var(--coral)); }
+    .qc-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .qc-card p {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      line-height: 1.6;
+    }
+
+    /* ========== MATERIALS SECTION ========== */
+    .materials-section {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+    }
+    .materials-section .section-tag {
+      background: #FEF3C7;
+      color: var(--sunset);
+    }
+    .materials-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .material-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid #f0ebe3;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .material-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .material-icon {
+      width: 56px; height: 56px;
+      min-width: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .material-card:nth-child(1) .material-icon { background: #DBEAFE; }
+    .material-card:nth-child(2) .material-icon { background: #D1FAE5; }
+    .material-card:nth-child(3) .material-icon { background: #FCE7F3; }
+    .material-card:nth-child(4) .material-icon { background: #EDE9FE; }
+    .material-text h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .material-text p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ========== QUESTIONS SECTION ========== */
+    .questions-section { background: #fff; }
+    .questions-section .section-tag {
+      background: #DBEAFE;
+      color: #3B82F6;
+    }
+    .questions-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .question-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #f0ebe3;
+    }
+    .question-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .question-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: var(--deep);
+    }
+    .question-item p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    /* ========== FINAL CTA ========== */
+    .final-cta-section {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--deep) 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(8, 145, 178, 0.12);
+      filter: blur(80px);
+      top: -100px; right: -100px;
+    }
+    .final-cta-section::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255, 107, 107, 0.08);
+      filter: blur(80px);
+      bottom: -100px; left: -100px;
+    }
+    .final-cta-inner {
+      max-width: 650px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .final-cta-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .final-cta-inner p {
+      font-size: 1.1rem;
+      opacity: 0.65;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .final-cta-inner .btn-primary {
+      font-size: 1.1rem;
+      padding: 1.1rem 2.5rem;
+    }
+    .urgency-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.6);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--ocean-light); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .footer-socials { display: flex; gap: 1rem; }
+    .footer-socials a {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .footer-socials a:hover { background: var(--ocean); }
+
+    /* ========== ANIMATIONS ON SCROLL ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .page-hero-text p { margin: 0 auto; }
+      .page-hero-visual { order: -1; }
+      .hero-gradient-card { width: 300px; height: 380px; }
+      .design-layout { grid-template-columns: 1fr; }
+      .design-visual { min-height: 300px; }
+      .where-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .where-bottom-row { grid-template-columns: 1fr; max-width: 400px; margin: 1.5rem auto 0; }
+      .qc-steps { grid-template-columns: 1fr 1fr; max-width: 500px; margin: 0 auto; }
+      .qc-steps::before { display: none; }
+      .materials-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .float-badge { display: none; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(255,251,245,0.98);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+      .mobile-toggle { display: block; }
+    }
+    @media (max-width: 600px) {
+      .qc-steps { grid-template-columns: 1fr; max-width: 300px; }
+    }
+    @media (max-width: 500px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html"><div class="nav-logo">patch<span>radise</span></div></a>
+      <div class="nav-links" id="navLinks">
+        <a href="product.html">Product</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="crafted.html" class="active" style="opacity:1">How It's Made</a>
+        <a href="sustainability.html">Ethics</a>
+        <a href="index.html#pricing" class="nav-cta">Shop Now</a>
+      </div>
+      <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+        &#9776;
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-text reveal">
+        <div class="section-tag">How & Where It's Made</div>
+        <h1>Crafted With Care,<br><span class="highlight">Built to Perform</span></h1>
+        <p>We believe you deserve to know exactly how your patches are made, where they come from, and why every detail matters. Transparency isn't a buzzword for us — it's how we operate.</p>
+      </div>
+      <div class="page-hero-visual">
+        <div class="hero-gradient-card">
+          <div class="hero-gradient-card-content">
+            <div class="card-icon">&#128300;</div>
+            <h3>Made in California</h3>
+            <p>Medical-grade facility, surfer-tested quality</p>
+          </div>
+        </div>
+        <div class="float-badge badge-1">
+          <div class="badge-icon">&#9989;</div>
+          <span>ISO 13485 Certified</span>
+        </div>
+        <div class="float-badge badge-2">
+          <div class="badge-icon">&#127466;&#127480;</div>
+          <span>Made in the USA</span>
+        </div>
+        <div class="float-badge badge-3">
+          <div class="badge-icon">&#128156;</div>
+          <span>Cruelty-Free</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Design Process -->
+  <section class="design-section">
+    <div class="section-header reveal">
+      <div class="section-tag">The Design Process</div>
+      <h2>Engineered in the Lineup</h2>
+      <p>Every patch is the result of deep collaboration and relentless real-world testing where it matters most — in the ocean.</p>
+    </div>
+    <div class="design-layout">
+      <div class="design-visual reveal">
+        <div class="design-visual-inner">
+          <div class="design-visual-center">
+            <div class="icon">&#128736;</div>
+            <p>Hundreds of<br>Prototypes</p>
+          </div>
+        </div>
+      </div>
+      <ul class="design-points reveal">
+        <li>
+          <div class="design-num">1</div>
+          <div class="design-text">
+            <h4>Surfers, Dermatologists & Engineers</h4>
+            <p>Every patch is a collaboration between active surfers who feel the problem, dermatologists who understand skin science, and material engineers who push boundaries.</p>
+          </div>
+        </li>
+        <li>
+          <div class="design-num">2</div>
+          <div class="design-text">
+            <h4>Ocean-Tested Prototypes</h4>
+            <p>Hundreds of prototypes were tested in real ocean conditions — from icy Northern California mornings to tropical Indo barrels — before a single patch shipped.</p>
+          </div>
+        </li>
+        <li>
+          <div class="design-num">3</div>
+          <div class="design-text">
+            <h4>Refined Through Feedback</h4>
+            <p>Every curve, thickness, and adhesive formula was refined through direct surfer feedback. If it didn't survive a dawn patrol, it went back to the lab.</p>
+          </div>
+        </li>
+        <li>
+          <div class="design-num">4</div>
+          <div class="design-text">
+            <h4>Mapped to Real Friction Zones</h4>
+            <p>The shape of each patch maps to real friction heat zones measured during surf sessions using thermal imaging. Science meets surf, on your skin.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Where It's Made -->
+  <section class="where-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Where It's Made</div>
+      <h2>California-Made, Medical-Grade</h2>
+      <p>Our patches are manufactured to the highest medical standards, right here on the coast where we surf every day.</p>
+    </div>
+    <div class="where-grid">
+      <div class="where-card reveal">
+        <div class="where-icon">&#127968;</div>
+        <h3>Certified Medical Facility</h3>
+        <p>Manufactured in a certified medical-grade facility in California, held to the same standards as surgical supply manufacturers.</p>
+      </div>
+      <div class="where-card reveal">
+        <div class="where-icon">&#9989;</div>
+        <h3>ISO 13485 Certified</h3>
+        <p>Our facility holds ISO 13485 certification — the international standard for medical device quality management systems.</p>
+      </div>
+      <div class="where-card reveal">
+        <div class="where-icon">&#129658;</div>
+        <h3>Surgical-Grade Standards</h3>
+        <p>The same facility standards used for manufacturing surgical dressings and wound care products are applied to every Patchradise patch.</p>
+      </div>
+    </div>
+    <div class="where-bottom-row">
+      <div class="where-card reveal">
+        <div class="where-icon" style="background: #FEF3C7;">&#128270;</div>
+        <h3>Small-Batch Production</h3>
+        <p>We produce in small batches to maintain rigorous quality control. Every run is inspected, not just sampled.</p>
+      </div>
+      <div class="where-card reveal">
+        <div class="where-icon" style="background: #FCE7F3;">&#127793;</div>
+        <h3>Lower Carbon Footprint</h3>
+        <p>Local manufacturing means shorter supply chains, lower carbon emissions, and the ability to iterate faster based on surfer feedback.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Control -->
+  <section class="qc-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Quality Control</div>
+      <h2>Five Steps to Perfection</h2>
+      <p>Every single patch goes through a rigorous multi-step quality assurance process before it reaches your hands.</p>
+    </div>
+    <div class="qc-steps">
+      <div class="qc-card reveal">
+        <div class="qc-num">1</div>
+        <h3>Raw Material Testing</h3>
+        <p>Every incoming material batch is tested for purity, consistency, and performance before entering production.</p>
+      </div>
+      <div class="qc-card reveal">
+        <div class="qc-num">2</div>
+        <h3>Adhesion Testing</h3>
+        <p>Patches are tested in saltwater immersion for 8+ hours to guarantee they hold through your longest sessions.</p>
+      </div>
+      <div class="qc-card reveal">
+        <div class="qc-num">3</div>
+        <h3>Skin Safety</h3>
+        <p>Dermatological patch testing on sensitive skin panels ensures zero irritation and hypoallergenic performance.</p>
+      </div>
+      <div class="qc-card reveal">
+        <div class="qc-num">4</div>
+        <h3>Durability</h3>
+        <p>Flex and stretch testing simulates real surf movements — paddling, duck diving, pop-ups — thousands of cycles.</p>
+      </div>
+      <div class="qc-card reveal">
+        <div class="qc-num">5</div>
+        <h3>Final Inspection</h3>
+        <p>Visual and dimensional checks on every single patch before packaging. Nothing ships without passing inspection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Materials & Sourcing -->
+  <section class="materials-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Materials & Sourcing</div>
+      <h2>What Goes Into Every Patch</h2>
+      <p>We're transparent about every material we use, where it comes from, and why we chose it.</p>
+    </div>
+    <div class="materials-grid">
+      <div class="material-card reveal">
+        <div class="material-icon">&#129518;</div>
+        <div class="material-text">
+          <h3>Hydrocolloid Base</h3>
+          <p>Medical-grade hydrocolloid sourced from certified suppliers. The same trusted material used in advanced wound care — gentle, effective, and proven.</p>
+        </div>
+      </div>
+      <div class="material-card reveal">
+        <div class="material-icon">&#128168;</div>
+        <div class="material-text">
+          <h3>Micro-Mesh Layer</h3>
+          <p>Breathable polyurethane film produced in the USA. Allows air circulation while blocking friction — your skin stays cool and dry underneath.</p>
+        </div>
+      </div>
+      <div class="material-card reveal">
+        <div class="material-icon">&#128156;</div>
+        <div class="material-text">
+          <h3>Hypoallergenic Adhesive</h3>
+          <p>Acrylic-based adhesive that is 100% latex-free and silicone-free. Designed for sensitive skin and tested to hold in saltwater for hours.</p>
+        </div>
+      </div>
+      <div class="material-card reveal">
+        <div class="material-icon">&#9997;&#65039;</div>
+        <div class="material-text">
+          <h3>Eco-Friendly Packaging</h3>
+          <p>Recycled cardboard, soy-based inks, and absolutely no plastic. From the patch to the box, we minimize environmental impact at every step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Questions Answered -->
+  <section class="questions-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Common Questions</div>
+      <h2>Answered, Openly</h2>
+      <p>We get these questions a lot. Here are straight answers with nothing to hide.</p>
+    </div>
+    <div class="questions-list">
+      <div class="question-item reveal">
+        <h3>"Is the facility FDA registered?"</h3>
+        <p>Our manufacturing facility is FDA registered and ISO 13485 certified, meeting the highest medical-grade standards. Patchradise patches are classified as a skin barrier, not a drug, so individual FDA drug approval is not required — but we voluntarily hold ourselves to medical device manufacturing standards because that's the level of quality our surfers deserve.</p>
+      </div>
+      <div class="question-item reveal">
+        <h3>"Where exactly are they made?"</h3>
+        <p>Right here in California, just miles from the coast where we surf. We chose to manufacture locally so we can walk the production floor, catch problems in person, and get back in the water to test the same afternoon. No overseas factories, no long supply chains — just a tight loop between where we make them and where we use them.</p>
+      </div>
+      <div class="question-item reveal">
+        <h3>"Are they tested on animals?"</h3>
+        <p>Never. Patchradise is and always will be 100% cruelty-free. We test on willing surfers only. Our team, our friends, and our community of beta testers volunteer to put every prototype through real-world conditions. Animals should be in the ocean, not in a lab.</p>
+      </div>
+      <div class="question-item reveal">
+        <h3>"What's the shelf life?"</h3>
+        <p>Unopened patches last 24 months when stored in a cool, dry place. Each package is individually sealed to maintain adhesive integrity and sterility until the moment you peel it open and paddle out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta-section">
+    <div class="final-cta-inner reveal">
+      <h2>Quality You Can Feel, Transparency You Can Trust</h2>
+      <p>From California-made materials to rigorous quality testing, every Patchradise patch is built to perform and built to last.</p>
+      <a href="index.html#pricing" class="btn-primary">Shop Patchradise &rarr;</a>
+      <div class="urgency-note">Free shipping on all orders &bull; 30-day money-back guarantee</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">patch<span>radise</span></div>
+        <p>Making wetsuit itch a thing of the past. Designed in California, loved worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="product.html">Product</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#reviews">Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="our-story.html">Our Story</a>
+        <a href="crafted.html">How It's Made</a>
+        <a href="sustainability.html">Ethics</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Help Center</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Patchradise. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram">&#128247;</a>
+        <a href="#" aria-label="TikTok">&#127916;</a>
+        <a href="#" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>

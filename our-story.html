@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story &amp; Mindset — Patchradise</title>
+  <meta name="description" content="Born from the lineup: how a group of California surfers turned wetsuit frustration into Patchradise, the anti-itch patch loved by 10,000+ surfers worldwide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: #1a1a2e;
+      background: #fffbf5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --coral: #FF6B6B;
+      --coral-dark: #e85555;
+      --ocean: #0891B2;
+      --ocean-dark: #0E7490;
+      --ocean-light: #67E8F9;
+      --sunset: #F97316;
+      --sunset-light: #FDBA74;
+      --sand: #FEF3C7;
+      --deep: #1a1a2e;
+      --lavender: #A78BFA;
+      --mint: #34D399;
+      --pink: #F472B6;
+      --sky: #38BDF8;
+      --cream: #fffbf5;
+    }
+
+    /* ========== ANIMATED BACKGROUND ========== */
+    .bg-blobs {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-blobs .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: blobFloat 20s ease-in-out infinite;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--ocean-light); top: -10%; left: -5%; animation-delay: 0s; }
+    .blob-2 { width: 500px; height: 500px; background: var(--coral); top: 30%; right: -10%; animation-delay: -5s; }
+    .blob-3 { width: 400px; height: 400px; background: var(--sunset-light); bottom: 10%; left: 20%; animation-delay: -10s; }
+    .blob-4 { width: 350px; height: 350px; background: var(--lavender); top: 60%; left: -5%; animation-delay: -15s; }
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(40px, 30px) scale(1.03); }
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(255, 251, 245, 0.9);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--ocean); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a.active { opacity: 1; }
+    .nav-cta {
+      background: var(--coral);
+      color: #fff !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      opacity: 1 !important;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: var(--coral-dark);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35);
+    }
+    .mobile-toggle { display: none; background: none; font-size: 1.5rem; }
+
+    /* ========== PAGE HERO ========== */
+    .page-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+    }
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+    .page-hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero-text h1 .highlight {
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-hero-text p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #555;
+      max-width: 500px;
+    }
+    .page-hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .page-hero-card {
+      width: 420px;
+      height: 460px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #0891B2, #38BDF8, #67E8F9, #34D399);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(8, 145, 178, 0.3);
+      animation: heroFloat 6s ease-in-out infinite;
+    }
+    .page-hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+    .page-hero-card-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2.5rem;
+      color: #fff;
+    }
+    .page-hero-card-content .hero-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero-card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .page-hero-card-content p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-15px) rotate(-1deg); }
+    }
+
+    /* ========== SECTION STYLES ========== */
+    section { padding: 6rem 2rem; }
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 4rem;
+    }
+    .section-tag {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-header p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ========== ORIGIN STORY ========== */
+    .origin-section {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+    }
+    .origin-section .section-tag {
+      background: #DBEAFE;
+      color: #3B82F6;
+    }
+    .origin-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .origin-visual {
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--ocean), var(--sky), var(--ocean-light));
+      padding: 3rem;
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .origin-visual-icon {
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      animation: heroFloat 6s ease-in-out infinite;
+    }
+    .origin-visual-text {
+      color: #fff;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 500;
+      opacity: 0.9;
+      max-width: 280px;
+      line-height: 1.6;
+    }
+    .origin-visual-badge {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 0.6rem 1.2rem;
+      border-radius: 100px;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .origin-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    .origin-text p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .origin-pullquote {
+      border-left: 4px solid var(--ocean);
+      padding: 1.5rem 0 1.5rem 1.5rem;
+      margin: 2rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--ocean-dark);
+      line-height: 1.5;
+    }
+    .origin-text .origin-detail {
+      font-size: 0.95rem;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    /* ========== PHILOSOPHY / VALUES ========== */
+    .philosophy-section { background: var(--cream); }
+    .philosophy-section .section-tag {
+      background: #EDE9FE;
+      color: var(--lavender);
+    }
+    .values-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .value-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid #f0ebe3;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .value-icon {
+      width: 56px; height: 56px;
+      min-width: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .value-card:nth-child(1) .value-icon { background: #D1FAE5; }
+    .value-card:nth-child(2) .value-icon { background: #DBEAFE; }
+    .value-card:nth-child(3) .value-icon { background: #E0F2FE; }
+    .value-card:nth-child(4) .value-icon { background: #FEF3C7; }
+    .value-text h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .value-text p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ========== THE TEAM ========== */
+    .team-section { background: #fff; }
+    .team-section .section-tag {
+      background: #FCE7F3;
+      color: var(--pink);
+    }
+    .team-panel {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--lavender), var(--pink), var(--coral), var(--sunset));
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+    .team-panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    }
+    .team-panel-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .team-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    .team-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+    .team-text .team-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      opacity: 1;
+      margin-top: 1.5rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid rgba(255,255,255,0.5);
+    }
+    .team-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .team-icon-group {
+      display: flex;
+      gap: 1rem;
+    }
+    .team-icon-bubble {
+      width: 70px;
+      height: 70px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      animation: badgeFloat 5s ease-in-out infinite;
+    }
+    .team-icon-bubble:nth-child(2) { animation-delay: -1.5s; }
+    .team-icon-bubble:nth-child(3) { animation-delay: -3s; }
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .team-visual-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0.8;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ========== WHY PATCHES ========== */
+    .why-section {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+    }
+    .why-section .section-tag {
+      background: #FEF3C7;
+      color: var(--sunset);
+    }
+    .why-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .why-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+    }
+    .why-icon-wrap {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .why-item:nth-child(1) .why-icon-wrap { background: #FEE2E2; }
+    .why-item:nth-child(2) .why-icon-wrap { background: #EDE9FE; }
+    .why-item:nth-child(3) .why-icon-wrap { background: #FEF3C7; }
+    .why-item:nth-child(4) .why-icon-wrap { background: #D1FAE5; }
+    .why-item:nth-child(5) .why-icon-wrap { background: #DBEAFE; }
+    .why-item-text h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .why-item-text p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.7;
+    }
+    .why-highlight {
+      max-width: 800px;
+      margin: 1rem auto 0;
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      color: #fff;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .why-highlight-icon {
+      font-size: 2rem;
+      min-width: 50px;
+      text-align: center;
+    }
+    .why-highlight p {
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ========== FINAL CTA ========== */
+    .final-cta-section {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--deep) 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(8, 145, 178, 0.12);
+      filter: blur(80px);
+      top: -100px; right: -100px;
+    }
+    .final-cta-section::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255, 107, 107, 0.08);
+      filter: blur(80px);
+      bottom: -100px; left: -100px;
+    }
+    .final-cta-inner {
+      max-width: 650px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .final-cta-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .final-cta-inner p {
+      font-size: 1.1rem;
+      opacity: 0.65;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--coral), var(--sunset));
+      color: #fff;
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 107, 107, 0.45);
+    }
+    .final-cta-inner .btn-primary {
+      font-size: 1.1rem;
+      padding: 1.1rem 2.5rem;
+    }
+    .urgency-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.6);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--ocean-light); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .footer-socials { display: flex; gap: 1rem; }
+    .footer-socials a {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .footer-socials a:hover { background: var(--ocean); }
+
+    /* ========== ANIMATIONS ON SCROLL ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .page-hero-text p { margin: 0 auto; }
+      .page-hero-visual { order: -1; }
+      .page-hero-card { width: 300px; height: 350px; }
+      .origin-grid { grid-template-columns: 1fr; }
+      .origin-visual { min-height: 300px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .team-panel { padding: 2.5rem; }
+      .team-panel-inner { grid-template-columns: 1fr; text-align: center; }
+      .team-text .team-quote { border-left: none; padding-left: 0; border-top: 2px solid rgba(255,255,255,0.4); padding-top: 1rem; }
+      .team-visual { order: -1; }
+      .team-icon-group { justify-content: center; }
+      .why-highlight { flex-direction: column; text-align: center; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(255,251,245,0.98);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+      .mobile-toggle { display: block; }
+    }
+    @media (max-width: 500px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">patch<span>radise</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="product.html">Product</a>
+        <a href="our-story.html" class="active" style="opacity:1">Our Story</a>
+        <a href="crafted.html">How It's Made</a>
+        <a href="sustainability.html">Ethics</a>
+        <a href="index.html#pricing" class="nav-cta">Shop Now</a>
+      </div>
+      <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+        &#9776;
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-text reveal">
+        <div class="section-tag" style="background:#E0F2FE; color:var(--ocean);">Our Story</div>
+        <h1>Born From<br><span class="highlight">the Lineup</span></h1>
+        <p>Patchradise was created by surfers who spent years battling wetsuit itch and rash with zero real solutions. We stopped waiting for someone to fix it and built the answer ourselves.</p>
+      </div>
+      <div class="page-hero-visual reveal">
+        <div class="page-hero-card">
+          <div class="page-hero-card-content">
+            <div class="hero-icon">&#127754;</div>
+            <h3>Made in the water</h3>
+            <p>Every idea starts with a dawn patrol and a problem that needs solving</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Origin Story -->
+  <section class="origin-section" id="origin">
+    <div class="section-header reveal">
+      <div class="section-tag">The Beginning</div>
+      <h2>How It All Started</h2>
+      <p>From raw necks and ruined sessions to a product that changed the way surfers suit up.</p>
+    </div>
+    <div class="origin-grid">
+      <div class="origin-visual reveal">
+        <div class="origin-visual-icon">&#129518;</div>
+        <div class="origin-visual-text">From surgical dressings to surf patches: a material science breakthrough</div>
+        <div class="origin-visual-badge">&#127754; California Coast</div>
+      </div>
+      <div class="origin-text reveal">
+        <h3>A daily frustration became a mission</h3>
+        <p>It started with a group of daily surfers on the California coast who were fed up. Every session left them with raw, irritated skin that burned for hours after they left the water. They tried everything they could find.</p>
+        <p>Petroleum jelly rubbed off within minutes. Rash guards under wetsuits added uncomfortable bulk. Body Glide needed constant reapplication. Talc powder was a mess and did nothing once wet. Nothing worked for more than a few waves.</p>
+        <div class="origin-pullquote">
+          "We realized nobody was solving this because nobody understood both the ocean and the science. We happened to know both."
+        </div>
+        <p class="origin-detail">One of the founders had a background in medical materials engineering. The breakthrough came when they realized that surgical wound dressings were designed for exactly this: adhesive barriers that stay put on wet skin, breathe, and peel off painlessly. They just needed to be reimagined for the surf.</p>
+        <p class="origin-detail">The first prototypes were cut by hand and tested at dawn patrol. Over months of iteration, testing in everything from mushy two-footers to overhead point breaks, the patches evolved. Patchradise was officially born when friends in the lineup started asking for patches before every single session.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy / Values -->
+  <section class="philosophy-section" id="philosophy">
+    <div class="section-header reveal">
+      <div class="section-tag">Our Mindset</div>
+      <h2>What We Believe In</h2>
+      <p>Four principles guide every decision we make, from materials to marketing.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">&#10024;</div>
+        <div class="value-text">
+          <h3>Simplicity First</h3>
+          <p>No complicated routines. No messy creams. No fifteen-step prep rituals. Patchradise is peel, stick, surf. That's it. Simplicity is a design principle, not a limitation.</p>
+        </div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">&#9881;&#65039;</div>
+        <div class="value-text">
+          <h3>Performance Over Hype</h3>
+          <p>We don't sell a lifestyle. We solve a real, specific problem. Every design decision is functional. Every material is chosen for performance. If it doesn't make the patch better, it doesn't make the cut.</p>
+        </div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">&#127754;</div>
+        <div class="value-text">
+          <h3>Ocean-First Thinking</h3>
+          <p>The ocean is our office, our playground, and our reason for existing. Everything we make must be safe to go back into it. Our materials are biodegradable and our packaging is recyclable.</p>
+        </div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">&#129309;</div>
+        <div class="value-text">
+          <h3>Community Driven</h3>
+          <p>Built by surfers, tested by surfers, improved by surfer feedback. Our best product updates come from emails, DMs, and conversations in the parking lot after sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Team -->
+  <section class="team-section" id="team">
+    <div class="section-header reveal">
+      <div class="section-tag">The Team</div>
+      <h2>The People Behind the Patch</h2>
+      <p>We are not a faceless corporation. We are the surfers in the water next to you.</p>
+    </div>
+    <div class="team-panel reveal">
+      <div class="team-panel-inner">
+        <div class="team-text">
+          <h3>Small crew, big waves</h3>
+          <p>Patchradise is run by a small team of surfers, material scientists, and ocean lovers. We are based on the California coast, close to the breaks where our product was born and where it gets tested daily.</p>
+          <p>Our team meetings sometimes happen in the water. Our product testing always does. We don't have a boardroom with a view of the ocean. We have the ocean.</p>
+          <div class="team-quote">
+            "We surf before work, and sometimes instead of work. The best ideas come from being in the water, not staring at a screen."
+          </div>
+        </div>
+        <div class="team-visual">
+          <div class="team-icon-group">
+            <div class="team-icon-bubble">&#127940;</div>
+            <div class="team-icon-bubble">&#128300;</div>
+            <div class="team-icon-bubble">&#127754;</div>
+          </div>
+          <div class="team-icon-group">
+            <div class="team-icon-bubble">&#9749;</div>
+            <div class="team-icon-bubble">&#128736;&#65039;</div>
+          </div>
+          <div class="team-visual-label">Surfers, scientists,<br>and ocean lovers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Patches, Not Cream? -->
+  <section class="why-section" id="why-patches">
+    <div class="section-header reveal">
+      <div class="section-tag">The Logic</div>
+      <h2>Why Patches, Not Cream?</h2>
+      <p>We tried every alternative before building Patchradise. Here is why patches win.</p>
+    </div>
+    <div class="why-content">
+      <div class="why-item reveal">
+        <div class="why-icon-wrap">&#128167;</div>
+        <div class="why-item-text">
+          <h3>Creams wash off in minutes</h3>
+          <p>Barrier creams and petroleum jelly dissolve in saltwater almost immediately. By the time you paddle out and catch your first wave, the protection is already gone. You are back to bare skin against neoprene.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon-wrap">&#128085;</div>
+        <div class="why-item-text">
+          <h3>Rash guards add bulk and restrict movement</h3>
+          <p>Wearing a rash guard under your wetsuit sounds logical, but the added layer creates bunching, restricts your paddle stroke, and can actually create new friction points. It trades one problem for another.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon-wrap">&#128260;</div>
+        <div class="why-item-text">
+          <h3>Body Glide needs constant reapplication</h3>
+          <p>Anti-chafe balms work for runners and cyclists, but the ocean is a different story. Saltwater and constant movement break down these products quickly, requiring reapplication that is impossible mid-session.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon-wrap">&#127919;</div>
+        <div class="why-item-text">
+          <h3>Patches deliver 8 hours of targeted protection</h3>
+          <p>A Patchradise patch stays exactly where you put it for up to 8 hours, even in heavy surf. It protects the exact friction zone with a medical-grade barrier, no reapplication needed. One and done.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon-wrap">&#127793;</div>
+        <div class="why-item-text">
+          <h3>No chemicals absorbing into your skin</h3>
+          <p>Unlike creams that rely on chemical ingredients soaking into your skin, patches create a physical barrier. Nothing absorbs. Nothing leaches into the water. Just clean, mechanical protection.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-highlight reveal">
+      <div class="why-highlight-icon">&#129518;</div>
+      <p>The result: targeted, long-lasting, chemical-free protection that works as hard as you surf. That is why we built patches, and that is why surfers keep coming back.</p>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta-section">
+    <div class="final-cta-inner reveal">
+      <h2>Join the Patchradise Community</h2>
+      <p>We started as a group of frustrated surfers with raw skin. Now we are a community of thousands who refuse to let wetsuit itch ruin another session.</p>
+      <a href="index.html#pricing" class="btn-primary">Get Your Patches &rarr;</a>
+      <div class="urgency-note">Free shipping on all orders &bull; 30-day money-back guarantee</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">patch<span>radise</span></div>
+        <p>Making wetsuit itch a thing of the past. Designed in California, loved worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="product.html">Product</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#reviews">Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="our-story.html">Our Story</a>
+        <a href="crafted.html">How It's Made</a>
+        <a href="sustainability.html">Ethics</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Help Center</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Patchradise. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram">&#128247;</a>
+        <a href="#" aria-label="TikTok">&#127916;</a>
+        <a href="#" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>

@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product — Patchradise Anti-Itch Patches for Surfers</title>
+  <meta name="description" content="Everything you need to know about Patchradise anti-itch patches. Ultra-thin, medical-grade hydrocolloid barriers for surfers, triathletes, and wetsuit wearers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: #1a1a2e;
+      background: #fffbf5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --coral: #FF6B6B;
+      --coral-dark: #e85555;
+      --ocean: #0891B2;
+      --ocean-dark: #0E7490;
+      --ocean-light: #67E8F9;
+      --sunset: #F97316;
+      --sunset-light: #FDBA74;
+      --sand: #FEF3C7;
+      --deep: #1a1a2e;
+      --lavender: #A78BFA;
+      --mint: #34D399;
+      --pink: #F472B6;
+      --sky: #38BDF8;
+      --cream: #fffbf5;
+    }
+
+    /* ========== ANIMATED BACKGROUND ========== */
+    .bg-blobs {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-blobs .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: blobFloat 20s ease-in-out infinite;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--ocean-light); top: -10%; left: -5%; animation-delay: 0s; }
+    .blob-2 { width: 500px; height: 500px; background: var(--coral); top: 30%; right: -10%; animation-delay: -5s; }
+    .blob-3 { width: 400px; height: 400px; background: var(--sunset-light); bottom: 10%; left: 20%; animation-delay: -10s; }
+    .blob-4 { width: 350px; height: 350px; background: var(--lavender); top: 60%; left: -5%; animation-delay: -15s; }
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(40px, 30px) scale(1.03); }
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(255, 251, 245, 0.9);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--ocean); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a.active { opacity: 1; }
+    .nav-cta {
+      background: var(--coral);
+      color: #fff !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      opacity: 1 !important;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: var(--coral-dark);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35);
+    }
+    .mobile-toggle { display: none; background: none; font-size: 1.5rem; }
+
+    /* ========== PAGE HERO ========== */
+    .page-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+    }
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+    .page-hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero-text h1 .highlight {
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-hero-text p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+    .page-hero-text .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--coral), var(--sunset));
+      color: #fff;
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+    }
+    .page-hero-text .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 107, 107, 0.45);
+    }
+
+    /* Hero visual card */
+    .page-hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .page-hero-card {
+      width: 400px;
+      height: 460px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #A78BFA, #F472B6, #FF6B6B);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(167, 139, 250, 0.3);
+      animation: heroFloat 6s ease-in-out infinite;
+    }
+    .page-hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+    .page-hero-card-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2.5rem;
+      color: #fff;
+    }
+    .page-hero-card-content .card-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero-card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .page-hero-card-content p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    /* Floating badges around hero card */
+    .float-badge {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      animation: badgeFloat 5s ease-in-out infinite;
+      z-index: 2;
+    }
+    .float-badge .badge-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .badge-1 { top: 10%; right: -15px; animation-delay: -1s; }
+    .badge-1 .badge-icon { background: #FCE7F3; }
+    .badge-2 { bottom: 22%; left: -30px; animation-delay: -3s; }
+    .badge-2 .badge-icon { background: #D1FAE5; }
+    .badge-3 { top: 45%; left: -40px; animation-delay: -2s; }
+    .badge-3 .badge-icon { background: #EDE9FE; }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-15px) rotate(-1deg); }
+    }
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ========== SECTION STYLES ========== */
+    section { padding: 6rem 2rem; }
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 4rem;
+    }
+    .section-tag {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-header p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ========== WHAT IT IS SECTION ========== */
+    .what-section {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+    }
+    .what-section .section-tag {
+      background: #DBEAFE;
+      color: #3B82F6;
+    }
+    .what-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .what-visual {
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--sky), var(--ocean-light), var(--mint));
+      padding: 3rem;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .what-demo {
+      width: 220px;
+      height: 220px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      position: relative;
+    }
+    .what-demo::after {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      border-radius: 50%;
+      border: 3px dashed rgba(255,255,255,0.4);
+      animation: spin 15s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .what-demo-inner {
+      text-align: center;
+    }
+    .what-demo-inner .icon { font-size: 3rem; margin-bottom: 0.5rem; }
+    .what-demo-inner p { font-weight: 700; color: var(--ocean-dark); font-size: 0.9rem; }
+    .what-details h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .what-details > p {
+      font-size: 1.05rem;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .spec-list {
+      list-style: none;
+    }
+    .spec-list li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+      align-items: flex-start;
+    }
+    .spec-icon {
+      width: 44px; height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .spec-list li:nth-child(1) .spec-icon { background: #DBEAFE; }
+    .spec-list li:nth-child(2) .spec-icon { background: #D1FAE5; }
+    .spec-list li:nth-child(3) .spec-icon { background: #FCE7F3; }
+    .spec-list li:nth-child(4) .spec-icon { background: #FEF3C7; }
+    .spec-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .spec-text p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ========== WHO IT'S FOR SECTION ========== */
+    .who-section { background: #fff; }
+    .who-section .section-tag {
+      background: #EDE9FE;
+      color: var(--lavender);
+    }
+    .who-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .who-card {
+      background: var(--cream);
+      border-radius: 24px;
+      padding: 2.2rem 1.5rem;
+      text-align: center;
+      border: 1px solid #f0ebe3;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .who-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    }
+    .who-icon {
+      width: 72px; height: 72px;
+      margin: 0 auto 1.2rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+    }
+    .who-card:nth-child(1) .who-icon { background: #DBEAFE; }
+    .who-card:nth-child(2) .who-icon { background: #FEF3C7; }
+    .who-card:nth-child(3) .who-icon { background: #D1FAE5; }
+    .who-card:nth-child(4) .who-icon { background: #FCE7F3; }
+    .who-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .who-card p {
+      font-size: 0.88rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ========== HOW TO USE SECTION ========== */
+    .howto-section {
+      background: linear-gradient(135deg, var(--deep) 0%, #16213e 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .howto-section::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(8, 145, 178, 0.1);
+      filter: blur(60px);
+    }
+    .howto-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(167, 139, 250, 0.08);
+      filter: blur(60px);
+    }
+    .howto-section .section-tag {
+      background: rgba(103, 232, 249, 0.15);
+      color: var(--ocean-light);
+    }
+    .howto-section .section-header p { color: rgba(255,255,255,0.6); }
+    .howto-steps {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .howto-step {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      align-items: flex-start;
+      position: relative;
+    }
+    .howto-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 32px;
+      top: 72px;
+      bottom: -20px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(103,232,249,0.4), rgba(103,232,249,0.05));
+    }
+    .howto-num {
+      width: 64px; height: 64px;
+      min-width: 64px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      position: relative;
+      z-index: 1;
+    }
+    .howto-step:nth-child(1) .howto-num { background: linear-gradient(135deg, var(--coral), var(--sunset)); }
+    .howto-step:nth-child(2) .howto-num { background: linear-gradient(135deg, var(--ocean), var(--sky)); }
+    .howto-step:nth-child(3) .howto-num { background: linear-gradient(135deg, var(--mint), #6EE7B7); color: var(--deep); }
+    .howto-step:nth-child(4) .howto-num { background: linear-gradient(135deg, var(--lavender), var(--pink)); }
+    .howto-step:nth-child(5) .howto-num { background: linear-gradient(135deg, var(--sunset-light), var(--sunset)); color: var(--deep); }
+    .howto-content {
+      padding-top: 0.5rem;
+    }
+    .howto-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .howto-content p {
+      font-size: 0.95rem;
+      opacity: 0.6;
+      line-height: 1.7;
+    }
+
+    /* ========== QUESTIONS SECTION ========== */
+    .questions-section {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+    }
+    .questions-section .section-tag {
+      background: #FEF3C7;
+      color: var(--sunset);
+    }
+    .questions-flow {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .question-block {
+      margin-bottom: 3rem;
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.5rem;
+      border: 1px solid #f0ebe3;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: transform 0.3s;
+    }
+    .question-block:hover {
+      transform: translateY(-3px);
+    }
+    .question-block .q-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .question-block:nth-child(1) .q-icon { background: #DBEAFE; }
+    .question-block:nth-child(2) .q-icon { background: #D1FAE5; }
+    .question-block:nth-child(3) .q-icon { background: #FCE7F3; }
+    .question-block:nth-child(4) .q-icon { background: #EDE9FE; }
+    .question-block:nth-child(5) .q-icon { background: #FEF3C7; }
+    .question-block:nth-child(6) .q-icon { background: #FEE2E2; }
+    .question-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .question-block p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* ========== FINAL CTA ========== */
+    .final-cta-section {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--deep) 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(8, 145, 178, 0.12);
+      filter: blur(80px);
+      top: -100px; right: -100px;
+    }
+    .final-cta-section::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255, 107, 107, 0.08);
+      filter: blur(80px);
+      bottom: -100px; left: -100px;
+    }
+    .final-cta-inner {
+      max-width: 650px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .final-cta-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .final-cta-inner p {
+      font-size: 1.1rem;
+      opacity: 0.65;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .final-cta-inner .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--coral), var(--sunset));
+      color: #fff;
+      padding: 1.1rem 2.5rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+    }
+    .final-cta-inner .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 107, 107, 0.45);
+    }
+    .urgency-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.6);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--ocean-light); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .footer-socials { display: flex; gap: 1rem; }
+    .footer-socials a {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .footer-socials a:hover { background: var(--ocean); }
+
+    /* ========== ANIMATIONS ON SCROLL ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .page-hero-text p { margin: 0 auto 2rem; }
+      .page-hero-visual { order: -1; }
+      .page-hero-card { width: 300px; height: 370px; }
+      .what-grid { grid-template-columns: 1fr; }
+      .what-visual { min-height: 300px; }
+      .who-grid { grid-template-columns: 1fr 1fr; }
+      .howto-step { gap: 1.2rem; }
+      .howto-num { width: 52px; height: 52px; min-width: 52px; font-size: 1.3rem; border-radius: 16px; }
+      .howto-step:not(:last-child)::after { left: 26px; top: 60px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .float-badge { display: none; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(255,251,245,0.98);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+      .mobile-toggle { display: block; }
+    }
+    @media (max-width: 600px) {
+      .who-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
+      .question-block { padding: 1.8rem; }
+    }
+    @media (max-width: 500px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">patch<span>radise</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="product.html" class="active">Product</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="crafted.html">How It's Made</a>
+        <a href="sustainability.html">Ethics</a>
+        <a href="index.html#pricing" class="nav-cta">Shop Now</a>
+      </div>
+      <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+        &#9776;
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-text reveal">
+        <h1>Everything You Need to Know About <span class="highlight">Patchradise</span></h1>
+        <p>The ultra-thin, medical-grade patches designed to end wetsuit irritation for good. Here is the full story of what they are, who they are for, and how to use them.</p>
+        <a href="index.html#pricing" class="btn-primary">Shop Patches &rarr;</a>
+      </div>
+      <div class="page-hero-visual">
+        <div class="page-hero-card">
+          <div class="page-hero-card-content">
+            <div class="card-icon">&#128218;</div>
+            <h3>The Complete Guide</h3>
+            <p>Specs, usage tips, and answers to every question</p>
+          </div>
+        </div>
+        <div class="float-badge badge-1">
+          <div class="badge-icon">&#129518;</div>
+          <span>Medical-Grade</span>
+        </div>
+        <div class="float-badge badge-2">
+          <div class="badge-icon">&#10024;</div>
+          <span>Ultra-Thin 0.3mm</span>
+        </div>
+        <div class="float-badge badge-3">
+          <div class="badge-icon">&#128156;</div>
+          <span>Hypoallergenic</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What It Is Section -->
+  <section class="what-section" id="what">
+    <div class="section-header reveal">
+      <div class="section-tag">What It Is</div>
+      <h2>The Patch, Explained</h2>
+      <p>A precision-engineered barrier that sits invisibly between your skin and your wetsuit, stopping friction before it starts.</p>
+    </div>
+    <div class="what-grid">
+      <div class="what-visual reveal">
+        <div class="what-demo">
+          <div class="what-demo-inner">
+            <div class="icon">&#129518;</div>
+            <p>Ultra-thin<br>0.3mm</p>
+          </div>
+        </div>
+      </div>
+      <div class="what-details reveal">
+        <h3>Medical-Grade Hydrocolloid Barrier</h3>
+        <p>Patchradise patches are ultra-thin (just 0.3mm) medical-grade hydrocolloid barriers, the same material trusted by surgeons and dermatologists in wound care. They conform perfectly to your skin contours, creating an invisible protective layer you will not even feel.</p>
+        <ul class="spec-list">
+          <li>
+            <div class="spec-icon">&#128167;</div>
+            <div class="spec-text">
+              <h4>Hydrocolloid Core</h4>
+              <p>Medical-grade hydrocolloid absorbs moisture while forming a smooth, friction-free surface against your wetsuit.</p>
+            </div>
+          </li>
+          <li>
+            <div class="spec-icon">&#127744;</div>
+            <div class="spec-text">
+              <h4>Breathable Micro-Mesh Top Layer</h4>
+              <p>Air circulates freely through the micro-mesh while blocking abrasion. Your skin stays cool, dry, and comfortable.</p>
+            </div>
+          </li>
+          <li>
+            <div class="spec-icon">&#128156;</div>
+            <div class="spec-text">
+              <h4>Hypoallergenic Adhesive Base</h4>
+              <p>Latex-free, dermatologist-tested adhesive that bonds securely in saltwater and peels off pain-free with zero residue.</p>
+            </div>
+          </li>
+          <li>
+            <div class="spec-icon">&#9986;&#65039;</div>
+            <div class="spec-text">
+              <h4>Pre-Cut for Surf Zones</h4>
+              <p>Purpose-shaped patches for the neck, chest, and armpit areas where wetsuit friction is most severe.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For Section -->
+  <section class="who-section" id="who">
+    <div class="section-header reveal">
+      <div class="section-tag">Who It's For</div>
+      <h2>Built for Anyone in Neoprene</h2>
+      <p>Whether you ride waves every morning or suit up once a season, Patchradise keeps your skin protected and comfortable.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <div class="who-icon">&#127754;</div>
+        <h3>Surfers</h3>
+        <p>Daily surfers dealing with chronic wetsuit rash on the neck, chest, and underarms. Surf longer without the burn.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">&#127947;&#65039;</div>
+        <h3>Triathletes</h3>
+        <p>Transition comfort during long races. Apply before the swim leg and stay chafe-free through bike and run.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">&#127946;</div>
+        <h3>Open Water Swimmers</h3>
+        <p>Protection during marathon swims where hours in a wetsuit push friction to the extreme.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">&#129343;</div>
+        <h3>Any Wetsuit Wearer</h3>
+        <p>Divers, kayakers, kiteboarders, and anyone who suits up in neoprene. If it chafes, Patchradise fixes it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed How to Use Section -->
+  <section class="howto-section" id="howto">
+    <div class="section-header reveal">
+      <div class="section-tag">How to Use</div>
+      <h2>Five Steps to a Perfect Session</h2>
+      <p>A complete guide to getting the most out of every patch, from prep to storage.</p>
+    </div>
+    <div class="howto-steps">
+      <div class="howto-step reveal">
+        <div class="howto-num">&#128166;</div>
+        <div class="howto-content">
+          <h3>1. Prep Your Skin</h3>
+          <p>Clean and thoroughly dry the skin area where you will apply the patch. Make sure there are no lotions, oils, or sunscreen on the surface. The adhesive bonds best to clean, dry skin for maximum hold throughout your session.</p>
+        </div>
+      </div>
+      <div class="howto-step reveal">
+        <div class="howto-num">&#129518;</div>
+        <div class="howto-content">
+          <h3>2. Apply the Patch</h3>
+          <p>Peel the protective backing to expose the adhesive. Position the patch over your friction zone and press down firmly for a full 10 seconds. Run your finger along all the edges to smooth them flat against your skin, ensuring a secure, bubble-free seal.</p>
+        </div>
+      </div>
+      <div class="howto-step reveal">
+        <div class="howto-num">&#127754;</div>
+        <div class="howto-content">
+          <h3>3. Suit Up and Surf</h3>
+          <p>Pull on your wetsuit normally. The patches are engineered to flex and move with your body. Their ultra-thin 0.3mm profile means zero bulk under your suit. Surf, paddle, duck dive, and wipe out without worry for up to 8 hours.</p>
+        </div>
+      </div>
+      <div class="howto-step reveal">
+        <div class="howto-num">&#128077;</div>
+        <div class="howto-content">
+          <h3>4. Remove After Your Session</h3>
+          <p>When your session is over, peel the patch slowly from one edge. Work gently across the surface to lift it without pulling on your skin. Rinse the area with fresh water. Warm water makes removal even smoother if you prefer.</p>
+        </div>
+      </div>
+      <div class="howto-step reveal">
+        <div class="howto-num">&#128230;</div>
+        <div class="howto-content">
+          <h3>5. Store Your Remaining Patches</h3>
+          <p>Place unused patches back in their resealable pouch and store in a cool, dry place away from direct sunlight. Proper storage keeps the adhesive fresh and effective for months, so your patches are always ready for your next session.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Questions Section -->
+  <section class="questions-section" id="questions">
+    <div class="section-header reveal">
+      <div class="section-tag">Common Questions</div>
+      <h2>Everything Else You Want to Know</h2>
+      <p>Straight answers to the questions surfers ask most about Patchradise.</p>
+    </div>
+    <div class="questions-flow">
+      <div class="question-block reveal">
+        <div class="q-icon">&#128260;</div>
+        <h3>Can I Reuse Them?</h3>
+        <p>No. Patchradise patches are designed for single use only. After a session, the adhesive layer has absorbed moisture and contoured to your body. Reusing a patch means a weaker bond, less protection, and a higher risk of bacteria buildup. For optimal performance and hygiene, use a fresh patch each time you suit up.</p>
+      </div>
+      <div class="question-block reveal">
+        <div class="q-icon">&#129509;</div>
+        <h3>Do They Work with Any Wetsuit?</h3>
+        <p>Yes, absolutely. Patchradise patches are compatible with every wetsuit brand, thickness, and style on the market. Whether you are wearing a 2mm shorty in summer or a 6/5mm hooded suit in winter, the patches sit flush against your skin and perform identically. The neoprene simply glides over the smooth micro-mesh surface.</p>
+      </div>
+      <div class="question-block reveal">
+        <div class="q-icon">&#128079;</div>
+        <h3>Will They Leave Marks on My Skin?</h3>
+        <p>No. The hypoallergenic adhesive is formulated to leave zero residue when removed. Most people experience no redness or marks at all. In rare cases, very sensitive skin may show slight pinkness that fades within minutes. If you have extremely reactive skin, try a small test patch on your forearm first.</p>
+      </div>
+      <div class="question-block reveal">
+        <div class="q-icon">&#9986;&#65039;</div>
+        <h3>Can I Trim Them to Fit?</h3>
+        <p>Yes, you can. While the pre-cut shapes are designed to cover the most common friction zones perfectly, every body is different. Use clean scissors to trim any patch to your preferred size and shape. Just make sure the edges stay smooth after cutting so they seal flat against your skin.</p>
+      </div>
+      <div class="question-block reveal">
+        <div class="q-icon">&#9728;&#65039;</div>
+        <h3>Can I Wear Sunscreen with Them?</h3>
+        <p>Yes, with one important step. Apply your sunscreen first and let it fully dry and absorb into your skin before placing the patch. If sunscreen is still wet or oily on the surface, the adhesive will not bond properly. Wait about five minutes after sunscreen application, then apply your patches to clean, dry skin.</p>
+      </div>
+      <div class="question-block reveal">
+        <div class="q-icon">&#128290;</div>
+        <h3>How Many Do I Need Per Session?</h3>
+        <p>Most surfers use two to three patches per session, depending on their personal friction zones. A typical setup is one patch on each side of the neck and one on the chest. If you also experience armpit chafing, add one or two more. Experiment with placement over a few sessions to find your ideal configuration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta-section">
+    <div class="final-cta-inner reveal">
+      <h2>Ready to Try Patchradise?</h2>
+      <p>Join 10,000+ surfers who have made wetsuit irritation a thing of the past. Your most comfortable sessions are waiting.</p>
+      <a href="index.html#pricing" class="btn-primary">Shop Patchradise Now &rarr;</a>
+      <div class="urgency-note">Free shipping on all orders &bull; 30-day money-back guarantee</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">patch<span>radise</span></a>
+        <p>Making wetsuit itch a thing of the past. Designed in California, loved worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="product.html">Product</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#reviews">Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="our-story.html">Our Story</a>
+        <a href="crafted.html">How It's Made</a>
+        <a href="sustainability.html">Ethics</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Help Center</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Patchradise. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram">&#128247;</a>
+        <a href="#" aria-label="TikTok">&#127916;</a>
+        <a href="#" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>
